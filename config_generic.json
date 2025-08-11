@@ -18,7 +18,7 @@
         },
         "linux": {
             "size_window_border_top": 0,
-            "size_window_border_bottom": 0,
+            "size_window_border_bottom": 22,
             "size_toolbar": 22,
             "left_offset_correction": 0
         }

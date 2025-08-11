@@ -16,10 +16,10 @@ else:
 
 
 class BordersDict(TypedDict):
-    size_window_border_top: float
-    size_window_border_bottom: float
-    size_toolbar: float
-    left_offset_correction: float
+    size_window_border_top: int
+    size_window_border_bottom: int
+    size_toolbar: int
+    left_offset_correction: int
 
 
 class Configuration:

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import argparse
+import pathlib
 import tkinter as tk
 from tkinter import scrolledtext, ttk
 import sys
@@ -8,6 +10,7 @@ import time
 from xeupiu.app import App
 from xeupiu.config import CONFIG
 from xeupiu.error_window import display_error
+from xeupiu.screenshot import get_window_by_title, get_window_image
 
 
 class StdoutRedirector:
@@ -228,7 +231,22 @@ class XeupiuControlPanel:
             self.app.log_everything(print_history=print_history)
 
 def main():
-    xcp = XeupiuControlPanel()
+    parser = argparse.ArgumentParser(description="Tokimeki memorial translation tool.")
+    parser.add_argument("--screenshot", type=pathlib.Path, help="Save a screenshot of the current game window, for debugging.")
+    args = parser.parse_args()
+    
+    # take a screenshot and exit
+    if args.screenshot is not None:
+        if args.screenshot.is_dir():
+            parser.error("Path to save screenshot is a directory, must be a file")
+        window_id = get_window_by_title("Tokimeki Memorial")
+        window_pixels = get_window_image(window_id)
+        if window_pixels:
+            window_pixels.save(args.screenshot)
+
+    # run xeupiu as normal
+    else:
+        xcp = XeupiuControlPanel()
 
 if __name__ == "__main__":
     main()

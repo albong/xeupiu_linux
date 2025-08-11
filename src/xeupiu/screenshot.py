@@ -18,7 +18,7 @@ if __name__ == "__main__":
     get_window_base_dims(window_id)
     window_pixels = get_window_image(window_id)
     if window_pixels:
-        window_pixels.save("test/ss.png")
+        window_pixels.save("data/test/ss.png")
     
 
     # tik = time.perf_counter()

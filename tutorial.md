@@ -1,5 +1,9 @@
 # Running XEUPIU
 
+## Disclaimer
+
+You must **own** a Playstation and a copy of Tokimeki Memorial.
+
 ## How to install
 
 ### Setting up the emulator
@@ -22,6 +26,8 @@ env -u WAYLAND_DISPLAY QT_QPA_PLATFORM=xcb <path to DuckStation appimage>
 ```
 
 If you're using something like AppimageLauncher, you should edit the generated desktop file to include these environment variables.
+
+Xeupiu has been tested with KDE, but not Gnome or other window managers. It should work fine, but if not it may be that the window cropping is wrong because of window manager differences. You may want to try tweaking the borders in `config.json`; you can double check how the window is being screenshotted using `xeupiu --screenshot <path to save screenshot>`.
 
 ### Setting up the translation backend
 

@@ -30,7 +30,7 @@ def _get_xwin(window_id) -> Xlib.xobject.drawable.Window:
     return xwin
 
 
-def get_window_image(window_id, offset_x=(0, 0), offset_y=(0, 0)) -> Image:
+def get_window_image(window_id, offset_x=(0, 0), offset_y=(0, 0)) -> Image.Image:
     """
     Returns a PIL image of the window with the given ID.
 
@@ -46,14 +46,14 @@ def get_window_image(window_id, offset_x=(0, 0), offset_y=(0, 0)) -> Image:
     bottom_offset = border_config["size_window_border_bottom"]
 
     # grab X buffer
-    x = geometry.x
-    y = geometry.y + top_offset
-    w = geometry.width
-    h = geometry.height - top_offset - bottom_offset
+    x = geometry.x + offset_x[0]
+    y = geometry.y + top_offset + offset_y[0]
+    w = geometry.width - offset_x[1]
+    h = geometry.height - top_offset - bottom_offset - offset_y[1]
     raw = xwin.get_image(x, y, w, h, Xlib.X.ZPixmap, 0xffffffff)  # all planes
 
     # convert to pillow image
-    image = Image.frombytes("RGB", (w, h), raw.data, "raw", "BGRX")
+    image = Image.frombytes("RGB", (w, h), raw.data, "raw", "BGRX", 0, 1)
     return image
 
 
