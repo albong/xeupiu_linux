@@ -53,13 +53,6 @@ The game is already playable, but the game script has not been fully collected y
 
 Most distros come with Tk, but if yours does not it will need to be installed.
 
-### Running from source
-
-For development, or to get the latest and greatest code, you can run from source. Clone the repo somewhere locally. Create a Python 3.11 environment with your favorite tool (pyenv/conda/pixi/etc), and then pip install. If you want to do development then you can do an editable install with
-```
-pip install -e . --config-settings editable_mode=compat
-```
-
 ## Frequently Asked Questions
 
 ### 1. The overlays are being shown even when the game is minimized!
